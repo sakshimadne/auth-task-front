@@ -3,29 +3,40 @@ import axios from 'axios'
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap'
 import { Link } from 'react-router-dom'
 
+// Register Component
 function Register() {
+  // Initialize user state with useState hook
   const [user, setUser] = useState({
     name: '',
     dob: '',
     email: '',
     password: '',
   })
-const url = 'https://task-auth.onrender.com'
+
+  // API URL
+  const url = 'https://task-auth.onrender.com'
+
+  // Function to handle input changes
+  // Update user state based on input fields
   const onChangeInput = (e) => {
     const { name, value } = e.target
     setUser({ ...user, [name]: value })
   }
 
+  // Function to handle form submission for user registration
   const registerSubmit = async (e) => {
     e.preventDefault()
     try {
-      const res = await axios.post(url + '/api/users/register', {
-        ...user,
-      })
+      // Make a POST request to register a new user
+      const res = await axios.post(url + '/api/users/register', { ...user })
 
+      // On successful registration, store user info in localStorage
       localStorage.setItem('userInfo', JSON.stringify(res.data))
+
+      // Redirect user to home page
       window.location.href = '/'
     } catch (err) {
+      // Display appropriate error messages
       if (err.response && err.response.data && err.response.data.msg) {
         alert(err.response.data.msg)
       } else {
@@ -34,6 +45,7 @@ const url = 'https://task-auth.onrender.com'
     }
   }
 
+  // Render registration form
   return (
     <div className='container mt-5'>
       <Form onSubmit={registerSubmit}>
