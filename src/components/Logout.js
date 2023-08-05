@@ -18,7 +18,16 @@ function Logout() {
   }
 
   // Render a logout button that triggers the handleLogout function when clicked
-  return <button onClick={handleLogout}>Logout</button>
+  return (
+    // <button onClick={handleLogout} className='btn btn-danger '>
+    //   Logout
+    // </button>
+    <div class='d-grid gap-2 d-md-flex justify-content-md-end'>
+      <button onClick={handleLogout} class='btn btn-danger' type='button'>
+        Logout
+      </button>
+    </div>
+  )
 }
 
 export default Logout

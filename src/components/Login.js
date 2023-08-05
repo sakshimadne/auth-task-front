@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap'
 import { Link } from 'react-router-dom'
 
-// Login Component
+import './Login.css'
 function Login() {
   // Initialize user state with email and password using useState hook
   const [user, setUser] = useState({
@@ -13,6 +12,7 @@ function Login() {
 
   // Define API url
   const url = 'https://task-auth.onrender.com'
+  // const url = 'http://localhost:5000'
 
   // Handle input field changes
   // It updates user state based on the input fields
@@ -43,41 +43,61 @@ function Login() {
       alert(err.response.data.msg)
     }
   }
-
-  // Render login form
   return (
-    <div className='container mt-5'>
-      <Form onSubmit={loginSubmit}>
-        <FormGroup>
-          <Label for='email'>Email</Label>
-          <Input
-            type='email'
-            name='email'
-            id='email'
-            placeholder='Email'
-            value={user.email}
-            onChange={onChangeInput}
-          />
-        </FormGroup>
-        <FormGroup>
-          <Label for='password'>Password</Label>
-          <Input
-            type='password'
-            name='password'
-            id='password'
-            placeholder='Password'
-            value={user.password}
-            onChange={onChangeInput}
-          />
-        </FormGroup>
-        <Button color='primary' type='submit'>
-          Login
-        </Button>
-      </Form>
-      <p className='mt-3'>
-        Don't have an account? <Link to='/register'>Register here</Link>
-      </p>
-    </div>
+    <>
+      <div className='login-form'>
+        <h2>Sign in to Your Account</h2>
+        <form
+          action='/examples/actions/confirmation.php'
+          method='post'
+          onSubmit={loginSubmit}
+        >
+          <div className='text-center'>
+            <img
+              src='https://www.tutorialrepublic.com/examples/images/avatar.gif'
+              className='rounded-circle avatar'
+              alt='Avatar'
+            />
+          </div>
+          <div className='form-group'>
+            <input
+              type='email'
+              className='form-control mb-3'
+              placeholder='Email'
+              name='email'
+              required
+              value={user.email}
+              onChange={onChangeInput}
+            />
+            <input
+              type='password'
+              name='password'
+              className='form-control mb-3'
+              placeholder='Password'
+              value={user.password}
+              onChange={onChangeInput}
+              required
+            />
+          </div>
+          <div className='form-group'>
+            <button
+              type='submit'
+              className='btn btn-primary btn-block mb-3 form-control'
+            >
+              Sign in
+            </button>
+          </div>
+          <div className='bottom-action clearfix'>
+            <label className='float-left form-check-label'>
+              <input type='checkbox' /> Remember me
+            </label>
+          </div>
+        </form>
+        <p className='mt-3'>
+          Don't have an account? <Link to='/register'>Register here</Link>
+        </p>
+      </div>
+    </>
   )
 }
 

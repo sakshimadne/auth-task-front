@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 function App() {
   return (
     // Use React Router for navigation
+
     <BrowserRouter>
       <Routes>
         // Route for login page
@@ -20,8 +21,8 @@ function App() {
         unauthenticated access
         <Route path='/' element={<PrivateRoute />}>
           // Route for home page, wrapped inside a PrivateRoute to ensure only
-          authenticated users can access
           <Route path='/' element={<HomePage />} />
+          authenticated users can access
         </Route>
       </Routes>
     </BrowserRouter>

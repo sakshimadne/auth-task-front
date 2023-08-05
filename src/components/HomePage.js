@@ -25,8 +25,8 @@ function HomePage() {
   return (
     <div className='container w-75 m-auto'>
       <h1 className='text-center'>Welcome to the Home Page</h1>
-      <Logout /> {/* Logout button */}
       <Table /> {/* Table component */}
+      <Logout /> {/* Logout button */}
     </div>
   )
 }
