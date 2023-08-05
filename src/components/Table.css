@@ -160,3 +160,24 @@ table.table .avatar {
   margin-top: 10px;
   font-size: 13px;
 }
+.action-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  margin: 0 5px;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+}
+
+.action-button.settings:hover {
+  background-color: #fffbf2;
+}
+
+.action-button.delete:hover {
+  background-color: #fff2f2;
+}
+
+.material-icons {
+  vertical-align: middle;
+}

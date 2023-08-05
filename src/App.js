@@ -13,16 +13,16 @@ function App() {
 
     <BrowserRouter>
       <Routes>
-        // Route for login page
+        {/* // Route for login page */}
         <Route path='/login' element={<Login />} />
-        // Route for register page
+        {/* // Route for register page */}
         <Route path='/register' element={<Register />} />
-        // Wrap HomePage route with PrivateRoute component to protect it from
-        unauthenticated access
+        {/* // Wrap HomePage route with PrivateRoute component to protect it from */}
+        {/* unauthenticated access */}
         <Route path='/' element={<PrivateRoute />}>
-          // Route for home page, wrapped inside a PrivateRoute to ensure only
+          {/* // Route for home page, wrapped inside a PrivateRoute to ensure only */}
           <Route path='/' element={<HomePage />} />
-          authenticated users can access
+          {/* authenticated users can access */}
         </Route>
       </Routes>
     </BrowserRouter>

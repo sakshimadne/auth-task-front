@@ -1,6 +1,49 @@
 import React from 'react'
 import './Table.css'
 
+const tableData = [
+  {
+    id: 1,
+    avatar: '1.jpg',
+    name: 'Michael Holz',
+    date: '04/10/2013',
+    role: 'Admin',
+    status: 'Active',
+  },
+  {
+    id: 2,
+    avatar: '2.jpg',
+    name: 'Paula Wilson',
+    date: '05/08/2014',
+    role: 'Publisher',
+    status: 'Active',
+  },
+  {
+    id: 3,
+    avatar: '3.jpg',
+    name: 'Antonio Moreno',
+    date: '11/05/2015',
+    role: 'Publisher',
+    status: 'Suspended',
+  },
+  {
+    id: 4,
+    avatar: '4.jpg',
+    name: 'Mary Saveley',
+    date: '06/09/2016',
+    role: 'Reviewer',
+    status: 'Active',
+  },
+  {
+    id: 5,
+    avatar: '5.jpg',
+    name: 'Martin Sommer',
+    date: '12/08/2017',
+    role: 'Moderator',
+    status: 'Inactive',
+  },
+]
+
 export default function Table() {
   return (
     <div className='container w-75 m-auto'>
@@ -16,186 +59,45 @@ export default function Table() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>
-              <a href='#'>
-                <img
-                  src='https://www.tutorialrepublic.com/examples/images/avatar/1.jpg'
-                  className='avatar'
-                  alt='Avatar'
-                />
-                Michael Holz
-              </a>
-            </td>
-            <td>04/10/2013</td>
-            <td>Admin</td>
-            <td>
-              <span className='status text-success'>•</span> Active
-            </td>
-            <td>
-              <a
-                href='#'
-                className='settings'
-                title='Settings'
-                data-toggle='tooltip'
-              >
-                <i className='material-icons'></i>
-              </a>
-              <a
-                href='#'
-                className='delete'
-                title='Delete'
-                data-toggle='tooltip'
-              >
-                <i className='material-icons'></i>
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>
-              <a href='#'>
-                <img
-                  src='https://www.tutorialrepublic.com/examples/images/avatar/2.jpg'
-                  className='avatar'
-                  alt='Avatar'
-                />{' '}
-                Paula Wilson
-              </a>
-            </td>
-            <td>05/08/2014</td>
-            <td>Publisher</td>
-            <td>
-              <span className='status text-success'>•</span> Active
-            </td>
-            <td>
-              <a
-                href='#'
-                className='settings'
-                title='Settings'
-                data-toggle='tooltip'
-              >
-                <i className='material-icons'></i>
-              </a>
-              <a
-                href='#'
-                className='delete'
-                title='Delete'
-                data-toggle='tooltip'
-              >
-                <i className='material-icons'></i>
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>
-              <a href='#'>
-                <img
-                  src='https://www.tutorialrepublic.com/examples/images/avatar/3.jpg'
-                  className='avatar'
-                  alt='Avatar'
-                />{' '}
-                Antonio Moreno
-              </a>
-            </td>
-            <td>11/05/2015</td>
-            <td>Publisher</td>
-            <td>
-              <span className='status text-danger'>•</span> Suspended
-            </td>
-            <td>
-              <a
-                href='#'
-                className='settings'
-                title='Settings'
-                data-toggle='tooltip'
-              >
-                <i className='material-icons'></i>
-              </a>
-              <a
-                href='#'
-                className='delete'
-                title='Delete'
-                data-toggle='tooltip'
-              >
-                <i className='material-icons'></i>
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>
-              <a href='#'>
-                <img
-                  src='https://www.tutorialrepublic.com/examples/images/avatar/4.jpg'
-                  className='avatar'
-                  alt='Avatar'
-                />{' '}
-                Mary Saveley
-              </a>
-            </td>
-            <td>06/09/2016</td>
-            <td>Reviewer</td>
-            <td>
-              <span className='status text-success'>•</span> Active
-            </td>
-            <td>
-              <a
-                href='#'
-                className='settings'
-                title='Settings'
-                data-toggle='tooltip'
-              >
-                <i className='material-icons'></i>
-              </a>
-              <a
-                href='#'
-                className='delete'
-                title='Delete'
-                data-toggle='tooltip'
-              >
-                <i className='material-icons'></i>
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td>
-              <a href='#'>
-                <img
-                  src='https://www.tutorialrepublic.com/examples/images/avatar/5.jpg'
-                  className='avatar'
-                  alt='Avatar'
-                />{' '}
-                Martin Sommer
-              </a>
-            </td>
-            <td>12/08/2017</td>
-            <td>Moderator</td>
-            <td>
-              <span className='status text-warning'>•</span> Inactive
-            </td>
-            <td>
-              <a
-                href='#'
-                className='settings'
-                title='Settings'
-                data-toggle='tooltip'
-              >
-                <i className='material-icons'></i>
-              </a>
-              <a
-                href='#'
-                className='delete'
-                title='Delete'
-                data-toggle='tooltip'
-              >
-                <i className='material-icons'></i>
-              </a>
-            </td>
-          </tr>
+          {tableData.map((row) => (
+            <tr key={row.id}>
+              <td>{row.id}</td>
+              <td>
+                <a href={`/profile/${row.id}`} className='user-link'>
+                  <img
+                    src={`https://www.tutorialrepublic.com/examples/images/avatar/${row.avatar}`}
+                    className='avatar'
+                    alt='Avatar'
+                  />
+                  {row.name}
+                </a>
+              </td>
+              <td>{row.date}</td>
+              <td>{row.role}</td>
+              <td>
+                <span
+                  className={`status text-${
+                    row.status === 'Active'
+                      ? 'success'
+                      : row.status === 'Suspended'
+                      ? 'danger'
+                      : 'warning'
+                  }`}
+                >
+                  •
+                </span>{' '}
+                {row.status}
+              </td>
+              <td>
+                <button className='action-button settings' title='Settings'>
+                  <i className='material-icons text-warning'>settings</i>
+                </button>
+                <button className='action-button delete' title='Delete'>
+                  <i className='material-icons text-danger'>delete</i>
+                </button>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
